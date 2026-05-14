@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orbital Rift Hub</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Rajdhani:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #071018;
+      --bg-panel: rgba(8, 17, 28, 0.72);
+      --primary: #5fffe0;
+      --secondary: #8f5bff;
+      --text: #e7faff;
+      --text-soft: #9ab8c4;
+      --border: rgba(95,255,224,0.25);
+      --glow: 0 0 15px rgba(95,255,224,0.45);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      font-family: 'Rajdhani', sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top, rgba(143,91,255,0.2), transparent 35%),
+        radial-gradient(circle at bottom, rgba(95,255,224,0.12), transparent 30%),
+        linear-gradient(to bottom, #04070d, #071018 55%, #02050a);
+      position: relative;
+    }
+
+    .stars {
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 90px 120px, rgba(95,255,224,0.7), transparent),
+        radial-gradient(2px 2px at 160px 80px, rgba(143,91,255,0.7), transparent),
+        radial-gradient(1px 1px at 250px 200px, rgba(255,255,255,0.6), transparent);
+      background-size: 300px 300px;
+      animation: moveStars 80s linear infinite;
+      opacity: 0.7;
+      z-index: 0;
+    }
+
+    @keyframes moveStars {
+      from { transform: translateY(0); }
+      to { transform: translateY(-300px); }
+    }
+
+    .main-container {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 30px;
+    }
+
+    .panel {
+      width: 100%;
+      max-width: 1100px;
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      backdrop-filter: blur(14px);
+      box-shadow:
+        0 0 40px rgba(0,0,0,0.55),
+        0 0 25px rgba(95,255,224,0.12);
+      overflow: hidden;
+    }
+
+    .hero {
+      padding: 70px 50px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      position: relative;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 8px 18px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      color: var(--primary);
+      letter-spacing: 2px;
+      font-size: 0.9rem;
+      margin-bottom: 25px;
+      text-transform: uppercase;
+      box-shadow: var(--glow);
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      line-height: 1;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      text-shadow: 0 0 20px rgba(95,255,224,0.35);
+    }
+
+    .gradient-text {
+      background: linear-gradient(to right, var(--primary), #ffffff, var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: auto;
+      font-size: 1.3rem;
+      color: var(--text-soft);
+      line-height: 1.6;
+    }
+
+    .activities {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+      padding: 40px;
+    }
+
+    .activity-card {
+      position: relative;
+      padding: 28px;
+      border-radius: 22px;
+      background: linear-gradient(145deg, rgba(14,28,40,0.9), rgba(7,16,24,0.95));
+      border: 1px solid rgba(95,255,224,0.12);
+      transition: transform 0.25s ease;
+    }
+
+    .activity-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(95,255,224,0.4);
+      box-shadow: 0 0 25px rgba(95,255,224,0.15);
+    }
+
+    .card-icon {
+      font-size: 2.4rem;
+      margin-bottom: 18px;
+    }
+
+    .activity-card h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      color: var(--primary);
+    }
+
+    .activity-card p {
+      color: var(--text-soft);
+      line-height: 1.5;
+      margin-bottom: 22px;
+    }
+
+    .activity-card button {
+      border: none;
+      padding: 12px 20px;
+      border-radius: 12px;
+      background: linear-gradient(to right, var(--primary), #6be7ff);
+      color: #041018;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: rgba(255,255,255,0.45);
+      font-size: 0.95rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        padding: 50px 25px;
+      }
+
+      .activities {
+        padding: 25px;
+      }
+
+      .hero p {
+        font-size: 1.05rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+
+  <div class="main-container">
+    <div class="panel">
+
+      <section class="hero">
+        <div class="tag">Orbital Rift Network</div>
+
+        <h1>
+          <span class="gradient-text">Fantasy</span>
+          Sci‑Fi Hub
+        </h1>
+
+        <p>
+          Un'interfaccia futuristica biomeccanica pronta per ospitare missioni,
+          attività interattive, minigiochi, dashboard e sistemi cooperativi.
+        </p>
+      </section>
+
+      <section class="activities">
+
+        <div class="activity-card">
+          <div class="card-icon">⚔️</div>
+          <h2>Missioni</h2>
+          <p>
+            Aggiungi quest cooperative, boss fight e obiettivi dinamici.
+          </p>
+          <button>Apri Modulo</button>
+        </div>
+
+        <div class="activity-card">
+          <div class="card-icon">🧬</div>
+          <h2>Ricerca Aliena</h2>
+          <p>
+            Sezione dedicata a tecnologie biomeccaniche e potenziamenti.
+          </p>
+          <button>Analizza</button>
+        </div>
+
+        <div class="activity-card">
+          <div class="card-icon">🌌</div>
+          <h2>Portale Stellare</h2>
+          <p>
+            Hub principale per attività multiplayer e contenuti live.
+          </p>
+          <button>Connetti</button>
+        </div>
+
+      </section>
+
+      <footer>
+        ORBITAL RIFT • Fantasy / Sci‑Fi Interface
+      </footer>
+
+    </div>
+  </div>
+</body>
+</html>
